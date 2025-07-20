@@ -15,8 +15,11 @@ import (
 )
 
 func main() {
-	if err := godotenv.Load("../.env"); err != nil {
-		log.Fatalln("error loading .env file")
+
+	if os.Getenv("DOCKER_RUN") == "true" {
+		log.Println("running in docker container, skipping .env load")
+	} else if err := godotenv.Load(".env"); err != nil {
+		log.Fatal("Error loading .env file")
 	}
 
 	dbUrl := os.Getenv("DB_URL")

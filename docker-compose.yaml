@@ -13,7 +13,10 @@ services:
             dockerfile: Dockerfile
         ports:
             -   "8080:8080"
+        env_file:
+            -   .env
         environment:
+            - DOCKER_RUN=true
             - ROD_BROWSER_PATH=/usr/bin/chromium
         volumes:
             -   rod-cache:/root/.cache/rod/browser
