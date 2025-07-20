@@ -35,7 +35,7 @@ func TableParser(table string) ([]types.Stock, error) {
 			Client:   rowData[3],
 			Type:     rowData[4],
 			TradeQty: rowData[5],
-			Remarks:  rowData[6],
+			Remark:   rowData[6],
 		}
 		bulk = append(bulk, stock)
 	})
