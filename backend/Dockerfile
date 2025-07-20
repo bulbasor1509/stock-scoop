@@ -3,6 +3,8 @@ FROM golang:latest
 
 WORKDIR /app
 
+ENV ROD_BROWSER_PATH=/usr/bin/chromium
+
 COPY go.mod go.sum ./
 RUN go mod download
 
@@ -32,6 +34,5 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8080
-ENV ROD_BROWSER_PATH=/usr/bin/chromium
 
 ENTRYPOINT ["./main"]
