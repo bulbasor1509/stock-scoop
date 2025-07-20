@@ -16,6 +16,8 @@ services:
             POSTGRES_USER: root
             POSTGRES_PASSWORD: root
             POSTGRES_DB: stock_data
+        ports:
+            -   "5432:5432"
         volumes:
             -   postgres_storage:/var/lib/postgresql/data
 volumes:
