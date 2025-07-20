@@ -1,0 +1,23 @@
+services:
+    backend:
+        build:
+            context: backend
+            dockerfile: Dockerfile
+        ports:
+            -   "3000:8080"
+        environment:
+            - ROD_BROWSER_PATH=/usr/bin/chromium
+        volumes:
+            -   rod-cache:/root/.cache/rod/browser
+    database:
+        image: postgres
+        container_name: postgres_db
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+            POSTGRES_DB: stock_data
+        volumes:
+            -   postgres_storage:/var/lib/postgresql/data
+volumes:
+    rod-cache:
+    postgres_storage:
