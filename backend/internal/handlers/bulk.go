@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"github.com/bulbasor1509/stock-scoop/backend/crawler"
-	"github.com/bulbasor1509/stock-scoop/backend/response"
+	"github.com/bulbasor1509/stock-scoop/backend/internal/crawler"
+	"github.com/bulbasor1509/stock-scoop/backend/internal/response"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
