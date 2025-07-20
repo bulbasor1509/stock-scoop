@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bulbasor1509/stock-scoop/backend/handlers"
+	"github.com/bulbasor1509/stock-scoop/backend/internal/handlers"
 	"github.com/gin-gonic/gin"
 	"log"
 )

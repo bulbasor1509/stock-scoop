@@ -1,7 +1,7 @@
 package crawler
 
 import (
-	"github.com/bulbasor1509/stock-scoop/backend/parser"
+	"github.com/bulbasor1509/stock-scoop/backend/internal/parser"
 	"github.com/bulbasor1509/stock-scoop/backend/types"
 	"github.com/go-rod/rod"
 	"log"
