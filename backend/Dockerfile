@@ -1,17 +1,23 @@
-# Use Go image for both build and runtime to avoid GLIBC version mismatch
+# Use Go base image for build and runtime
 FROM golang:latest
 
+# Set working directory
 WORKDIR /app
 
+# Set ROD Chromium path
 ENV ROD_BROWSER_PATH=/usr/bin/chromium
 
+# Copy Go mod files and download dependencies
 COPY go.mod go.sum ./
 RUN go mod download
 
+# Copy the entire project
 COPY . .
 
-RUN go build -o main .
+# Build the Go app from specific entry point
+RUN go build -o main ./cmd/stock-scoop/main.go
 
+# Install Chromium and required libraries
 RUN apt-get update && apt-get install -y \
     chromium \
     fonts-liberation \
@@ -33,6 +39,8 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Expose application port
 EXPOSE 8080
 
+# Set the binary as entrypoint
 ENTRYPOINT ["./main"]
