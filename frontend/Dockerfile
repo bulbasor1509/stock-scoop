@@ -2,7 +2,6 @@ FROM node:latest AS deps
 
 WORKDIR /app
 COPY package.json ./
-RUN npm install
 
 FROM node:latest AS builder
 
