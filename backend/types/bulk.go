@@ -23,7 +23,7 @@ type StocksInsert struct {
 	Security  []string
 	Clients   []string
 	Types     []database.Trade
-	TradeQtys []int64
+	TradeQtys []string
 	AvgPrices []string
 	Remarks   []string
 }
@@ -35,7 +35,7 @@ type StockResponse struct {
 	Security string         `json:"security"`
 	Client   string         `json:"client"`
 	Type     database.Trade `json:"type"`
-	TradeQty int64          `json:"trade_qty"`
+	TradeQty string         `json:"trade_qty"`
 	AvgPrice string         `json:"avg_price"`
 }
 

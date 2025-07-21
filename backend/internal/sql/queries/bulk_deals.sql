@@ -9,13 +9,13 @@ INSERT INTO bulk_deals (
     wt_price
 )
 SELECT
-    UNNEST(@dates::date[]),
-    UNNEST(@symbols::text[]),
-    UNNEST(@security_names::text[]),
+    UNNEST(@dates::DATE[]),
+    UNNEST(@symbols::TEXT[]),
+    UNNEST(@security_names::TEXT[]),
     UNNEST(@client_names::text[]),
     UNNEST(@trade_types::trade[]),
-    UNNEST(@quantities::bigint[]),
-    UNNEST(@prices::numeric(18,6)[]);
+    UNNEST(@quantities::TEXT[]),
+    UNNEST(@prices::TEXT[]);
 
 
 -- name: GetBulkData :many

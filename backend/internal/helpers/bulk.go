@@ -2,10 +2,9 @@ package helpers
 
 import (
 	"github.com/bulbasor1509/stock-scoop/backend/internal/database"
+	"github.com/bulbasor1509/stock-scoop/backend/internal/parser"
 	"github.com/bulbasor1509/stock-scoop/backend/types"
 	"github.com/gin-gonic/gin"
-	"strconv"
-	"time"
 )
 
 const (
@@ -15,7 +14,7 @@ const (
 func FormatBulkData(stocks []types.Stock) types.StocksInsert {
 	var stocksData types.StocksInsert
 	for _, stock := range stocks {
-		parsedDate, _ := time.Parse(layout, stock.Date)
+		parsedDate, _ := parser.DateParser(stock.Date)
 		stocksData.Dates = append(stocksData.Dates, parsedDate)
 		stocksData.Symbols = append(stocksData.Symbols, stock.Symbol)
 		stocksData.Security = append(stocksData.Security, stock.Security)
@@ -27,9 +26,7 @@ func FormatBulkData(stocks []types.Stock) types.StocksInsert {
 			stocksData.Types = append(stocksData.Types, database.TradeSELL)
 		}
 
-		tradeQty, _ := strconv.ParseInt(stock.TradeQty, 10, 64)
-		stocksData.TradeQtys = append(stocksData.TradeQtys, tradeQty)
-
+		stocksData.TradeQtys = append(stocksData.TradeQtys, stock.TradeQty)
 		stocksData.AvgPrices = append(stocksData.AvgPrices, stock.AvgPrice)
 		stocksData.Remarks = append(stocksData.Remarks, stock.Remark)
 	}

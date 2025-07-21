@@ -8,8 +8,8 @@ CREATE TABLE bulk_deals(
      security_name TEXT NOT NULL,
      client_name TEXT NOT NULL,
      trade_type  trade NOT NULL,
-     quantity_traded BIGINT NOT NULL,
-     wt_price NUMERIC(18,6) NOT NULL
+     quantity_traded TEXT NOT NULL,
+     wt_price TEXT NOT NULL
 );
 
 -- +goose Down

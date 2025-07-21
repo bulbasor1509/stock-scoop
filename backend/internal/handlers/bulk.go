@@ -14,12 +14,13 @@ func BulkHandler(cfg *types.ApiConfig) gin.HandlerFunc {
 		bulk, err := crawler.BulkCrawler("https://www.nseindia.com/report-detail/display-bulk-and-block-deals")
 
 		if err != nil {
-
 			response.Fail(ctx, http.StatusInternalServerError, err)
+			return
 		}
 
 		if err := helpers.InsertBulkData(ctx, cfg, bulk); err != nil {
 			response.Fail(ctx, http.StatusInternalServerError, err)
+			return
 		}
 
 		response.Success(ctx, http.StatusOK, bulk)
@@ -30,6 +31,7 @@ func GetBulkHandler(cfg *types.ApiConfig) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		bulk, err := cfg.DB.GetBulkData(ctx)
 		bulkRes := types.DatabaseBulkToBulk(bulk)
+
 		if err != nil {
 			response.Fail(ctx, http.StatusInternalServerError, err)
 		}

@@ -59,13 +59,13 @@ INSERT INTO bulk_deals (
     wt_price
 )
 SELECT
-    UNNEST($1::date[]),
-    UNNEST($2::text[]),
-    UNNEST($3::text[]),
+    UNNEST($1::DATE[]),
+    UNNEST($2::TEXT[]),
+    UNNEST($3::TEXT[]),
     UNNEST($4::text[]),
     UNNEST($5::trade[]),
-    UNNEST($6::bigint[]),
-    UNNEST($7::numeric(18,6)[])
+    UNNEST($6::TEXT[]),
+    UNNEST($7::TEXT[])
 `
 
 type InsertBulkDataParams struct {
@@ -74,7 +74,7 @@ type InsertBulkDataParams struct {
 	SecurityNames []string
 	ClientNames   []string
 	TradeTypes    []Trade
-	Quantities    []int64
+	Quantities    []string
 	Prices        []string
 }
 

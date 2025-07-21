@@ -38,10 +38,10 @@ const bulk_table: ColumnDef<Bulk>[] = [
     {
         accessorKey: "avg_price",
         header: "Price",
-        cell: ({getValue}) => {
-            const value = getValue<string>()
-            return parseFloat(value)
-        }
+        // cell: ({getValue}) => {
+        //     const value = getValue<string>()
+        //     return parseFloat(value)
+        // }
     }
 ]
 

@@ -18,7 +18,7 @@ func main() {
 
 	if os.Getenv("DOCKER_RUN") == "true" {
 		log.Println("running in docker container, skipping .env load")
-	} else if err := godotenv.Load(".env"); err != nil {
+	} else if err := godotenv.Load("../.env"); err != nil {
 		log.Fatal("Error loading .env file")
 	}
 

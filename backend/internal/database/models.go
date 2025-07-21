@@ -61,6 +61,6 @@ type BulkDeal struct {
 	SecurityName   string
 	ClientName     string
 	TradeType      Trade
-	QuantityTraded int64
+	QuantityTraded string
 	WtPrice        string
 }
